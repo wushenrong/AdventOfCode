@@ -1,11 +1,21 @@
-.vscode
-*.txt
+# VSCode Settings
+.vscode/*
+!.vscode/settings.json.orig
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+!.vscode/java-formatter.xml
+!.vscode/checkstyle.xml
 
 # Local History for Visual Studio Code
-.history
+.history/
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+# Plain text for testing the code
+*.txt
 
 # Compiled class file
 *.class
@@ -19,7 +29,7 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# Package Files
 *.jar
 *.war
 *.nar
@@ -27,6 +37,9 @@
 *.zip
 *.tar.gz
 *.rar
+
+# Ignore library files and modules
+!lib/**/*.jar
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
