@@ -1,0 +1,18 @@
+{
+    "[java]": {
+        "editor.detectIndentation": false
+    },
+    "java.checkstyle.configuration": ".vscode/checkstyle.xml",
+    "java.checkstyle.modules": [
+        "lib/checkstyle/sevntu-checks-1.44.1.jar"
+    ],
+    "java.checkstyle.version": "10.4",
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ],
+    "java.project.sourcePaths": [
+        "src"
+    ]
+}
