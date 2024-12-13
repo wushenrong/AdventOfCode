@@ -1,8 +1,8 @@
 package aoc.aoc2022;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
+
+import aoc.Utilities;
 
 public class DayTwo {
     private static final int SCORE_FOR_WINNING = 6;
@@ -10,7 +10,7 @@ public class DayTwo {
     public static final int SCORE_FOR_DRAW = 3;
 
     public static void main(String[] args) {
-        ArrayList<String> strategy = readStrategyFromFile("2022DayTwo.txt");
+        ArrayList<String> strategy = Utilities.readLinesFromFile("2022DayTwo.txt");
         System.out.println("Basic Strategy: " + calculateBasicStrategy(strategy));
         System.out.println("Advance Strategy: " + calculateAdvanceStrategy(strategy));
     }
@@ -163,20 +163,5 @@ public class DayTwo {
         }
 
         return totalScore;
-    }
-
-    public static ArrayList<String> readStrategyFromFile(String filename) {
-        ArrayList<String> strategy = new ArrayList<>();
-
-        try (Scanner fileScanner = new Scanner(new File(filename))) {
-            while (fileScanner.hasNextLine()) {
-                strategy.add(fileScanner.nextLine());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-        return strategy;
     }
 }

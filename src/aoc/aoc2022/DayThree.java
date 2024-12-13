@@ -1,8 +1,8 @@
 package aoc.aoc2022;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
+
+import aoc.Utilities;
 
 public class DayThree {
     public static final int RUCKSACKS_PER_GROUP = 3;
@@ -11,7 +11,7 @@ public class DayThree {
     public static final int START_OF_PRINTABLE_CHARACTERS = 6;
 
     public static void main(String[] args) {
-        ArrayList<String> rucksacks = readRucksacksFromFile("2022DayThree.txt");
+        ArrayList<String> rucksacks = Utilities.readLinesFromFile("2022DayThree.txt");
         System.out.println("Rucksacks Priority: " + calculateTotalPriority(rucksacks));
         System.out.println("Group Priority: " + calculateTotalGroupPriority(rucksacks));
     }
@@ -80,20 +80,5 @@ public class DayThree {
         }
 
         return priority;
-    }
-
-    public static ArrayList<String> readRucksacksFromFile(String filename) {
-        ArrayList<String> rucksacks = new ArrayList<>();
-
-        try (Scanner fileScanner = new Scanner(new File(filename))) {
-            while (fileScanner.hasNextLine()) {
-                rucksacks.add(fileScanner.nextLine());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-        return rucksacks;
     }
 }
