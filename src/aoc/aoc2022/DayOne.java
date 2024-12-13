@@ -1,4 +1,4 @@
-package AOC2022;
+package aoc.aoc2022;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class DayOne {
+    public static final int NUM_OF_ELVES_TO_GET = 3;
+
     public static void main(String[] args) {
         ArrayList<Integer> calories = readCaloriesFromFile("2022DayOne.txt");
         ArrayList<Integer> caloriesCount = countCalories(calories);
@@ -16,7 +18,7 @@ public class DayOne {
         int topThreeCalories = 0;
 
         System.out.println("Top Three Calories");
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < NUM_OF_ELVES_TO_GET; i++) {
             int calorieCount = caloriesCount.get(i);
             System.out.println(calorieCount);
             topThreeCalories += calorieCount;
@@ -30,11 +32,11 @@ public class DayOne {
 
         int totalCalories = 0;
         for (Integer calorie : calories) {
-            if (calorie != -1) {
-                totalCalories += calorie;
-            } else {
+            if (calorie == -1) {
                 counts.add(totalCalories);
                 totalCalories = 0;
+            } else {
+                totalCalories += calorie;
             }
         }
 

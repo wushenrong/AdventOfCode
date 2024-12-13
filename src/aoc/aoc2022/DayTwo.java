@@ -1,10 +1,14 @@
-package AOC2022;
+package aoc.aoc2022;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DayTwo {
+    private static final int SCORE_FOR_WINNING = 6;
+    public static final int SCORE_FOR_PLAYING_SCISSORS = 3;
+    public static final int SCORE_FOR_DRAW = 3;
+
     public static void main(String[] args) {
         ArrayList<String> strategy = readStrategyFromFile("2022DayTwo.txt");
         System.out.println("Basic Strategy: " + calculateBasicStrategy(strategy));
@@ -38,6 +42,8 @@ public class DayTwo {
             case "C":
                 opponentScissors = true;
                 break;
+            default:
+                break;
             }
 
             switch (home) {
@@ -52,16 +58,18 @@ public class DayTwo {
                 break;
 
             case "Z":
-                score += 3;
+                score += SCORE_FOR_PLAYING_SCISSORS;
                 homeScissors = true;
+                break;
+            default:
                 break;
             }
 
             if ((homeRock && opponentRock) || (homePaper && opponentPaper) || (homeScissors && opponentScissors)) {
-                score += 3;
+                score += SCORE_FOR_DRAW;
             } else if ((homeRock && opponentScissors) || (homePaper && opponentRock)
                     || (homeScissors && opponentPaper)) {
-                score += 6;
+                score += SCORE_FOR_WINNING;
             }
 
             totalScore += score;
@@ -97,13 +105,15 @@ public class DayTwo {
             case "C":
                 opponentScissors = true;
                 break;
+            default:
+                break;
             }
 
             switch (home) {
             case "X":
                 if (opponentRock) {
                     homeScissors = true;
-                    score += 3;
+                    score += SCORE_FOR_PLAYING_SCISSORS;
                 } else if (opponentPaper) {
                     homeRock = true;
                     score += 1;
@@ -122,7 +132,7 @@ public class DayTwo {
                     score += 2;
                 } else if (opponentScissors) {
                     homeScissors = true;
-                    score += 3;
+                    score += SCORE_FOR_PLAYING_SCISSORS;
                 }
                 break;
 
@@ -132,19 +142,21 @@ public class DayTwo {
                     score += 2;
                 } else if (opponentPaper) {
                     homeScissors = true;
-                    score += 3;
+                    score += SCORE_FOR_PLAYING_SCISSORS;
                 } else if (opponentScissors) {
                     homeRock = true;
                     score += 1;
                 }
                 break;
+            default:
+                break;
             }
 
             if ((homeRock && opponentRock) || (homePaper && opponentPaper) || (homeScissors && opponentScissors)) {
-                score += 3;
+                score += SCORE_FOR_DRAW;
             } else if ((homeRock && opponentScissors) || (homePaper && opponentRock)
                     || (homeScissors && opponentPaper)) {
-                score += 6;
+                score += SCORE_FOR_WINNING;
             }
 
             totalScore += score;

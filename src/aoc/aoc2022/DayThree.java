@@ -1,13 +1,14 @@
-package AOC2022;
+package aoc.aoc2022;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DayThree {
-    public final static int ATCharacterASCIIValue = 64;
-    public final static int UpperToLowerCaseValue = 32;
-    public final static int SpecialCharacters = 6;
+    public static final int RUCKSACKS_PER_GROUP = 3;
+    public static final int AT_CHARACTER_ASCII_VALUE = 64;
+    public static final int UPPER_TO_LOWER_CASE_DIFFERENCE = 32;
+    public static final int START_OF_PRINTABLE_CHARACTERS = 6;
 
     public static void main(String[] args) {
         ArrayList<String> rucksacks = readRucksacksFromFile("2022DayThree.txt");
@@ -28,7 +29,7 @@ public class DayThree {
     public static int calculateTotalGroupPriority(ArrayList<String> rucksacks) {
         int totalGroupPriority = 0;
 
-        for (int i = 0; i < rucksacks.size(); i += 3) {
+        for (int i = 0; i < rucksacks.size(); i += RUCKSACKS_PER_GROUP) {
             totalGroupPriority += calculatePriority(getGroupBadge(rucksacks, i));
         }
 
@@ -72,10 +73,10 @@ public class DayThree {
     }
 
     public static int calculatePriority(char character) {
-        int priority = character - ATCharacterASCIIValue - UpperToLowerCaseValue;
+        int priority = character - AT_CHARACTER_ASCII_VALUE - UPPER_TO_LOWER_CASE_DIFFERENCE;
 
         if (priority < 0) {
-            priority += ATCharacterASCIIValue - SpecialCharacters;
+            priority += AT_CHARACTER_ASCII_VALUE - START_OF_PRINTABLE_CHARACTERS;
         }
 
         return priority;
